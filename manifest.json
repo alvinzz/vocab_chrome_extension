@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
+  "name": "Vocab-Builder",
+  "description": "Helps to improve your vocabulary, despite you being on the Internet.",
   "version": "1.0",
 
   "content_scripts": [
@@ -17,7 +17,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
+    "activeTab"
   ]
 }
