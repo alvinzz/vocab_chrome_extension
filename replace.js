@@ -98,7 +98,7 @@ function backToText(wordlist) {
   }
   return string;
 }
-
+console.log("Starting Replacement");
 var frequencylist;
 $.getJSON('testData.json', function(data) {
   frequencylist = $.parseJSON(data);
