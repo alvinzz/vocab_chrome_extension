@@ -1,22 +1,25 @@
 {
-  "manifest_version": 2,
+  "name": "Instant Thesaurus",
+  "description": "Find synonyms at the click of a button",
+  "version": "0.3",
 
-  "name": "Vocab-Builder",
-  "description": "Helps to improve your vocabulary, despite you being on the Internet.",
-  "version": "1.0",
+  "permissions": [
+  "contextMenus",
+  "clipboardRead",
+  "clipboardWrite",
+  "tabs",
+  "activeTab",
+  "http://thesaurus.altervista.org/thesaurus/*"
+  ],
+  "background": {
+    "scripts": ["thesaurus.js"]
+  },
 
   "content_scripts": [
-    {
-        "matches": ["http://*/*", "https://*/*"],
-        "js": ["replace.js"]
-    }
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }
   ],
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "activeTab"
-  ]
+  "manifest_version": 2
 }
