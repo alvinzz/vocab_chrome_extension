@@ -34,7 +34,7 @@ function tryGetReplace(word) {
     }
   }
   for(var i = word.length; i >= 0; i++) {
-    if((word.charCodeAt(i) >= 97 && <= 122) || (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90)) {
+    if((word.charCodeAt(i) >= 97 && word.charCodeAt(i) <= 122) || (word.charCodeAt(i) >= 65 && word.charCodeAt(i) <= 90)) {
       end = i;
       break;
     }
@@ -98,7 +98,7 @@ function backToText(wordlist) {
   }
   return string;
 }
-var frequencylist = jQuery.parseJSON($.getJSON( "words.json"));
+var frequencylist = $.parseJSON($.getJSON( "words.json"));
 var list = filterParents(document.getElementByTagName("*"));
 var wordlists = getWordList(list);
 var textlist = {};
