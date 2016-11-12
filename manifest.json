@@ -8,9 +8,14 @@
   "content_scripts": [
     {
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["replace.js"]
+        "js": ["replace.js", "jquery-3.1.1.js"]
     }
   ],
+
+  "background":
+    {
+        "scripts": ["jquery-3.1.1.js"]
+    },
 
   "browser_action": {
     "default_icon": "icon.png",
