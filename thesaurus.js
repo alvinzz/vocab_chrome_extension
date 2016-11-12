@@ -20,6 +20,7 @@ function copyTextToClipboard(text) {
 
 
 function find_synonyms(word) {
+	//alert(document.getURL().toString());
 	var xhr = new XMLHttpRequest();
 	var params = "word=" + word + "&language=en_US&output=json&key=hYrjBiG559abNlfKVZzP";
 	var url = "http://thesaurus.altervista.org/thesaurus/v1?" + params;
@@ -109,7 +110,15 @@ function find_synonyms(word) {
 
 
 var cm_clickHandler = function(clickData, tab) {
-	var synonyms = find_synonyms(clickData.selectionText);
+	if ((document.getURL()).includes("docs.google.com")) {
+		var selection = DocumentApp.getActiveDocument().getSelection();
+		if (selection) {
+    		var elements = selection.getSelectedElements();
+    	}
+		var synonyms = find_synonyms(elements.asText().getText());
+	} else {
+		var synonyms = find_synonyms(clickData.selectionText);
+	}
 };
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
