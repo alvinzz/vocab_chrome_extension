@@ -12,7 +12,7 @@ function filterParents(elements) {
 function getWordList(leaves) {
   var wordlists = {};
   for(var i = 0; i < leaves.length; i++) {
-    wordlists[leaves[i]] = document.getElementById(leaves[i]).innerHTML().split(" ");
+    wordlists[leaves[i]] = document.getElementById(leaves[i]).innerHTML.split(" ");
   }
   return wordlists;
 }
@@ -61,9 +61,16 @@ function tryGetReplace(word) {
     return false;
   }
 }
-//Test whether a word is simple enough to replace
+//Test whether a word is simple enough to replace and not on blacklist
 function isSimple(word) {
-
+  var rank = 0;
+  if(word in frequencylist) {
+    rank = frequencylist[word];
+  }
+  if(rank > 50 && rank < 1000) {
+    return true;
+  }
+  return false;
 }
 //Get a synonym for a word
 function getSynonym(word) {
@@ -92,6 +99,7 @@ function backToText(wordlist) {
   }
   return string;
 }
+var frequencylist = JSON.parse(frequencylist.json);
 var list = filterParents(document.getElementByTagName("*"));
 var wordlists = getWordList(list);
 var textlist = {};
