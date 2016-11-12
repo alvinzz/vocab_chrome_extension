@@ -103,8 +103,8 @@ var frequencylist;
 $.getJSON('words.json', function(data) {
   frequencylist = $.parseJSON(data);
 });
-
-var list = filterParents(document.getElementsByTagName("*"));
+var allelements = document.getElementsByTagName("*"); //All elements on page
+var list = filterParents(document.getElementsByTagName("*")); //Array indexes of elements on page meeting criteria
 var wordlists = getWordList(list);
 var textlist = {};
 for(id in wordlists) {
