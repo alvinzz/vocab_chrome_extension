@@ -100,11 +100,11 @@ function backToText(wordlist) {
 }
 console.log("Starting Replacement");
 var frequencylist;
-$.getJSON('testData.json', function(data) {
+$.getJSON('words.json', function(data) {
   frequencylist = $.parseJSON(data);
 });
 
-var list = filterParents(document.getElementByTagName("*"));
+var list = filterParents(document.getElementsByTagName("*"));
 var wordlists = getWordList(list);
 var textlist = {};
 for(id in wordlists) {
