@@ -98,7 +98,12 @@ function backToText(wordlist) {
   }
   return string;
 }
-var frequencylist = $.parseJSON($.getJSON( "words.json"));
+
+var frequencylist;
+$.getJSON('testData.json', function(data) {
+  frequencylist = $.parseJSON(data);
+});
+
 var list = filterParents(document.getElementByTagName("*"));
 var wordlists = getWordList(list);
 var textlist = {};
