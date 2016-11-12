@@ -61,7 +61,7 @@ function tryGetReplace(word) {
     return false;
   }
 }
-//Test whether a word is simple enough to replace and not on blacklist
+//Test whether a word is simple enough to replace but not too simple
 function isSimple(word) {
   var rank = 0;
   if(word in frequencylist) {
@@ -74,7 +74,6 @@ function isSimple(word) {
 }
 //Get a synonym for a word
 function getSynonym(word) {
-
 }
 //Replace approximately every nth word in an array of words with a synonym
 function replaceWords(wordlist, n) {
@@ -99,7 +98,7 @@ function backToText(wordlist) {
   }
   return string;
 }
-var frequencylist = JSON.parse(frequencylist.json);
+var frequencylist = jQuery.parseJSON($.getJSON( "words.json"));
 var list = filterParents(document.getElementByTagName("*"));
 var wordlists = getWordList(list);
 var textlist = {};
