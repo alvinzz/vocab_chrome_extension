@@ -21,7 +21,7 @@
     "js": ["jquery-3.1.1.min.js", "betterreplace.js", "content.js"]
   }
   ],
-
+  
   "background":
     {
         "scripts": ["jquery-3.1.1.js", "thesaurus.js"]
@@ -33,6 +33,7 @@
   },
   "permissions": [
     "activeTab"],
+
   "manifest_version": 2,
   "web_accessible_resources": [
   "words.json"

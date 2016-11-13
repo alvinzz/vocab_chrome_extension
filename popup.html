@@ -6,7 +6,7 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>Werd</title>
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
@@ -27,10 +27,15 @@
       -
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
      -->
-    <script src ="replace.js"></script>
+
     <script src="popup.js"></script>
   </head>
   <body>
+    <h1> Werd </h1><br>
+    <p>Word Complexity:</p>
+    <input type="range" id="complexity" value="7000" max ="10000" min = "1000">
+
+
     <div id="status"></div>
     <img id="image-result" hidden>
   </body>
