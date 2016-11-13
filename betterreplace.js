@@ -1,3 +1,26 @@
+/*
+//Return only elements which have no children
+function filterParents(elements) {
+  var leaves = [];
+  for(var i = 0; i < elements.length; i++) {
+    if(!elements[i].hasChildNodes()){
+      leaves[leaves.length]=i;
+      console.log(elements[i].innerHTML);
+    }
+    return leaves;
+  }
+}
+//Return an object with the array index of element as key, and an array of the words in its
+//inner HTML as the value.
+function getWordList(leaves, nodelist) {
+  var wordlists = {};
+  for(var i = 0; i < leaves.length; i++) {
+    wordlists[leaves[i]] = nodelist[leaves[i]].innerHTML.split(" ");
+  }
+  return wordlists;
+}
+*/
+//If the word is simple and contains no non-letters, replace it with a synonym
 function tryGetReplace(word) {
   if(typeof word != "string") {
     return false;
@@ -98,12 +121,6 @@ function backToText(wordlist) {
   }
   return string;
 }
-<<<<<<< HEAD
-var frequencylist = JSON.parse($.getJSON( "words.json"));
-var list = filterParents(document.getElementByTagName("*"));
-var wordlists = getWordList(list);
-var textlist = {};
-=======
 
 console.log("Starting Replacement");
 /*
@@ -122,15 +139,13 @@ console.log(list);
 console.log(document.getElementsByTagName("*")[list[0]].innerHTML);// = "why, oh god why will this message not appear";
 var wordlists = getWordList(list, allelements); //allelements index : list of words
 //var textlist = {};
->>>>>>> 4e797a68a7db469abcaf444936fd0775762e76b6
 for(id in wordlists) {
   replaceWords(wordlists[id], 7);
   allelements[id].innerHTML = backToText(wordlists[id]);
 }
 */
-if(replacing) {
-  walk(document.body);
-}
+
+walk(document.body);
 
 function walk(node)
 {
@@ -164,7 +179,7 @@ function handleText(textNode)
 
   var wordlist = textNode.nodeValue.split(" ");
   console.log("Initial list "+wordlist);
-  replaceWords(wordlist, replacespacing);
+  replaceWords(wordlist, 7);
   console.log("Changed list " + wordlist);
   var finalvalue = backToText(wordlist);
   console.log("Resulting text " + finalvalue);
