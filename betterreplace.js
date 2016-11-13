@@ -102,7 +102,7 @@ function backToText(wordlist) {
 }
 console.log("Starting Replacement");
 var frequencylist;
-$.getJSON(chrome.extension.getURL('words.json'), function(data) {
+$.getJSON(chrome.extension.getURL('manifest.json'), function(data) {
   frequencylist = $.parseJSON(data);
 });
 var allelements = document.getElementsByTagName("*"); //All elements on page
