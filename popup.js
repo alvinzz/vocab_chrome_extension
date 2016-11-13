@@ -27,12 +27,13 @@
 
 // $(".complexity").on("change", function(){console.log(document.getElementById("complexity").value);simplebenchmark = document.getElementById("complexity").value;});
 
-document.getElementById("complexity").addEventListener("change", complexChange);
+//document.getElementById("complexity").addEventListener("change", function() {console.log("test");});
 
-function complexChange() {
+
+
+
     // simplebenchmark  = document.getElementById("complexity").value;
-    console.log("test");
-}
+
   // Most methods of the Chrome extension APIs are asynchronous. This means that
   // you CANNOT do something like this:
   //
@@ -53,7 +54,14 @@ function complexChange() {
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
+function complexFunc() {
+  console.log("It's adead!");
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   	renderStatus(window.getSelection().toString());
-  });
+    console.log("testtest");
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("complexity").addEventListener("change", complexFunc);
+});

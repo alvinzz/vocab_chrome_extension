@@ -29,7 +29,7 @@ function tryGetReplace(word) {
     return false;
   }
   var testedword = word.slice(start,end+1).toLowerCase();
-  console.log(testedword + "-Tested Word");
+  //console.log(testedword + "-Tested Word");
   var firstchars = word.slice(0,start);
   var lastchars = word.slice(end+1);
   /*
@@ -98,12 +98,12 @@ function backToText(wordlist) {
   }
   return string;
 }
-<<<<<<< HEAD
+/*
 var frequencylist = JSON.parse($.getJSON( "words.json"));
 var list = filterParents(document.getElementByTagName("*"));
 var wordlists = getWordList(list);
 var textlist = {};
-=======
+*/
 
 console.log("Starting Replacement");
 /*
@@ -163,11 +163,11 @@ function handleText(textNode)
 {
 
   var wordlist = textNode.nodeValue.split(" ");
-  console.log("Initial list "+wordlist);
+  //console.log("Initial list "+wordlist);
   replaceWords(wordlist, replacespacing);
-  console.log("Changed list " + wordlist);
+  //console.log("Changed list " + wordlist);
   var finalvalue = backToText(wordlist);
-  console.log("Resulting text " + finalvalue);
+  //console.log("Resulting text " + finalvalue);
   textNode.nodeValue = finalvalue;
 
   var v = textNode.nodeValue;
