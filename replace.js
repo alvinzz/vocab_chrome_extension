@@ -121,8 +121,9 @@ for(id in wordlists) {
   allelements[id].innerHTML = backToText(wordlists[id]);
 }
 */
-
-walk(document.body);
+if(replacing) {
+  walk(document.body);
+}
 
 function walk(node)
 {
@@ -156,7 +157,7 @@ function handleText(textNode)
 
   var wordlist = textNode.nodeValue.split(" ");
   console.log("Initial list "+wordlist);
-  replaceWords(wordlist, 7);
+  replaceWords(wordlist, replacespacing);
   console.log("Changed list " + wordlist);
   var finalvalue = backToText(wordlist);
   console.log("Resulting text " + finalvalue);

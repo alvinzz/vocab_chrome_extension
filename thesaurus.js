@@ -5,6 +5,14 @@
 **/
 
 // ID to manage the context menu entry
+
+//Content_Scripts Variables
+var replacespacing = 5;
+var simplebenchmark = 8000;
+var replacing = true; 
+
+
+
 var cmid;
 var submenus = [];
 
@@ -36,7 +44,7 @@ function find_synonyms(word) {
 				contexts: ['selection']
 			};
 			chrome.contextMenus.update(cmid, suboptions);
-				
+
 			try {
 				//window.alert(xhr.responseText);
 				results = JSON.parse(xhr.responseText);
@@ -55,7 +63,7 @@ function find_synonyms(word) {
 				chrome.contextMenus.update(cmid, suboptions);
 				return;
 			}
-			
+
 			if (synonyms.length == 0 && antonyms.length == 0){
 				suboptions = {
 					title: "Nothing highlighted.",
@@ -64,8 +72,8 @@ function find_synonyms(word) {
 				chrome.contextMenus.update(cmid, suboptions);
 				return;
 			}
-			
-			var smid; 
+
+			var smid;
 			synonyms.forEach(function(syn) {
 				suboptions = {
 					title: syn,
@@ -76,9 +84,9 @@ function find_synonyms(word) {
 					}
 				};
 				smid = chrome.contextMenus.create(suboptions);
-				
+
 			});
-			
+
 			if (antonyms.length > 0) {
 				suboptions = {
 					type: "separator",
@@ -87,7 +95,7 @@ function find_synonyms(word) {
 					contexts: ['selection']
 				};
 				smid = chrome.contextMenus.create(suboptions);
-				
+
 				antonyms.forEach(function(ant) {
 					suboptions = {
 						title: ant,
@@ -98,12 +106,12 @@ function find_synonyms(word) {
 						}
 					};
 					smid = chrome.contextMenus.create(suboptions);
-					
+
 				});
 			}
 		}
 	};
-	
+
 	xhr.send();
 };
 
@@ -117,7 +125,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 		if (msg.selection == '') {
 			return false;
 		}
-		
+
         var type = 'Synonyms for ' + msg.selection;
         if (type == '') {
             // Remove the context menu entry
@@ -137,7 +145,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
             cmid = chrome.contextMenus.create(options, function(pid) {
 				var synonyms = find_synonyms(msg.selection);
 			});
-			
+
         }
     }
 	else if (msg.request == 'clearContextMenu') {
