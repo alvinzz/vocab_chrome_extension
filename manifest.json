@@ -25,7 +25,7 @@
 
   "background":
     {
-        "scripts": ["jquery-3.1.1.js"]
+        "scripts": ["jquery-3.1.1.js", "thesaurus.js"]
     },
 
   "browser_action": {
