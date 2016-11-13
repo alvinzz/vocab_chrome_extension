@@ -18,13 +18,13 @@
   "content_scripts": [
   {
     "matches": ["<all_urls>"],
-    "js": ["jquery-3.1.1.min.js", "betterreplace.js", "content.js"]
+    "js": ["jquery-3.1.1.min.js", "replace.js", "content.js"]
   }
   ],
-  
+
   "background":
     {
-        "scripts": ["jquery-3.1.1.js", "thesaurus.js"]
+        "scripts": ["jquery-3.1.1.min.js", "thesaurus.js"]
     },
 
   "browser_action": {

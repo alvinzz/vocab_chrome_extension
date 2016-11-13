@@ -7,11 +7,19 @@
 // ID to manage the context menu entry
 
 //Content_Scripts Variables
-var replacespacing = 5;
+var background = chrome.extension.getBackgroundPage();
+var replacespacing = 1;
 var simplebenchmark = 8000;
 var replacing = true;
 
-
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.greeting == "hello")
+      sendResponse({farewell: [simplebenchmark, replacing, replacespacing]});
+  });
 
 var cmid;
 var submenus = [];

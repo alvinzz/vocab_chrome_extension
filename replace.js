@@ -105,15 +105,26 @@ var wordlists = getWordList(list);
 var textlist = {};
 */
 
-console.log("Starting Replacement");
-/*
+console.log("Starting Replacement BETA");
+
 var frequencylist;
 console.log(chrome.extension.getURL('words.json'));
-$.getJSON(chrome.extension.getURL('words.json'), function(data) {
-  frequencylist = data;//$.parseJSON(data);
-});
+// $.getJSON(chrome.extension.getURL('words.json'), function(data) {
+//   frequencylist = data;
+//   console.log(typeof frequencylist);
+// });
+
+//SUCCESSFUL JSON
+var freqxhr = new XMLHttpRequest();                 //create a new XMLHttpRequest object to make a GET call from
+freqxhr.onreadystatechange = function() {           //Create a function that executes whenever the state of the XMLHttpRequest changes
+  if (this.readyState == 4 && this.status == 200) { //This specifies when a response is ready
+    frequencylist = JSON.parse(this.responseText);  //responseText is the str of the response, so parse it and set frequencylist to it
+  }
+}
+freqxhr.open("GET", chrome.extension.getURL('words.json'), true); //prepare GET call
+freqxhr.send();                                                   //make GET call
 console.log(typeof frequencylist);
-*/
+
 /*
 var allelements = document.getElementsByTagName("*"); //All elements on page
 console.log(allelements);
@@ -128,7 +139,19 @@ for(id in wordlists) {
   allelements[id].innerHTML = backToText(wordlists[id]);
 }
 */
-if(replacing) {
+// Inside content.js
+var backgroundvars = [];
+console.log("Sending Message");
+chrome.extension.sendMessage({greeting: "hello"}, function(response) {
+        backgroundvars[0] = response.farewell[0];
+        backgroundvars[1] = response.farewell[1];
+});
+if(backgroundvars.length < 1) {
+  backgroundvars[0] = 5;
+  backgroundvars[1] = true;
+}
+
+if(backgroundvars[1]) {
   walk(document.body);
 }
 
@@ -163,11 +186,11 @@ function handleText(textNode)
 {
 
   var wordlist = textNode.nodeValue.split(" ");
-  //console.log("Initial list "+wordlist);
-  replaceWords(wordlist, replacespacing);
-  //console.log("Changed list " + wordlist);
+  console.log("Initial list "+wordlist);
+  replaceWords(wordlist, backgroundvars[0]);
+  console.log("Changed list " + wordlist);
   var finalvalue = backToText(wordlist);
-  //console.log("Resulting text " + finalvalue);
+  console.log("Resulting text " + finalvalue);
   textNode.nodeValue = finalvalue;
 
   var v = textNode.nodeValue;
