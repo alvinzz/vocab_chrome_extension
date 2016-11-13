@@ -20,8 +20,9 @@ document.addEventListener('mouseup', function(e) {
 		// }
 		// );//.trim();
 		if ( selection.length > 2 && selection.length < 30 && ((selection.split(" ").length - 1) < 2) ) {
-			if (selection == current)
+			if (selection == current) {
 				return;
+			}
 			current = selection;
 			chrome.extension.sendMessage({
 				request: 'updateContextMenu',
@@ -34,3 +35,4 @@ document.addEventListener('mouseup', function(e) {
 		}
 	}
 }, true);
+
