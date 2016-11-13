@@ -16,11 +16,10 @@ function copyTextToClipboard(text) {
   copyFrom.select();
   document.execCommand('copy');
   body.removeChild(copyFrom);
-}
+};
 
 
 function find_synonyms(word) {
-	//alert(document.getURL().toString());
 	var xhr = new XMLHttpRequest();
 	var params = "word=" + word + "&language=en_US&output=json&key=hYrjBiG559abNlfKVZzP";
 	var url = "http://thesaurus.altervista.org/thesaurus/v1?" + params;
@@ -59,7 +58,7 @@ function find_synonyms(word) {
 			
 			if (synonyms.length == 0 && antonyms.length == 0){
 				suboptions = {
-					title: "No synonyms found.",
+					title: "Nothing highlighted.",
 					contexts: ['selection']
 				};
 				chrome.contextMenus.update(cmid, suboptions);
@@ -110,15 +109,7 @@ function find_synonyms(word) {
 
 
 var cm_clickHandler = function(clickData, tab) {
-	if ((document.getURL()).includes("docs.google.com")) {
-		var selection = DocumentApp.getActiveDocument().getSelection();
-		if (selection) {
-    		var elements = selection.getSelectedElements();
-    	}
-		var synonyms = find_synonyms(elements.asText().getText());
-	} else {
-		var synonyms = find_synonyms(clickData.selectionText);
-	}
+	var synonyms = find_synonyms(clickData.selectionText);
 };
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
@@ -127,7 +118,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 			return false;
 		}
 		
-        var type = 'Synonyms for '+msg.selection;
+        var type = 'Synonyms for ' + msg.selection;
         if (type == '') {
             // Remove the context menu entry
             if (cmid != null) {
