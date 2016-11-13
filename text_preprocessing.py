@@ -5,13 +5,14 @@ import pickle
 from collections import Counter
 from nltk.stem.wordnet import WordNetLemmatizer
 import os
+import sys
 
 def save_obj(obj, name):
-    with open('obj/'+ name + '.pkl', 'wb') as f:
+    with open(name + '.pkl', 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
 def load_obj(name):
-    with open('obj/' + name + '.pkl', 'rb') as f:
+    with open(name + '.pkl', 'rb') as f:
         return pickle.load(f)
 
 def get_pos(tag):
@@ -65,7 +66,7 @@ def get_freqs(paths):
                         else:
                             frequencies[word] = Counter({adj_word: 1})
         except:
-            pass
+            print("Could not open file!")
         if 100*index/len(paths) >= percent + .1:
             percent += .1
             print(str(percent) + '%')
@@ -78,7 +79,7 @@ def get_freqs(paths):
             frequencies[word][adj_word] /= tot
     return frequencies
 
-# paths = [os.path.join(root, file) for root, dirs, files in os.walk(".")
-#     for file in files if file.endswith(".txt")]
-# freqs = get_freqs(paths)
-# save_obj(freqs, 'freqs')
+if __name__ == "__main__":
+    paths = sys.argv
+    freqs = get_freqs(paths)
+    save_obj(freqs, 'freqs')
