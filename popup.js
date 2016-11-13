@@ -25,7 +25,14 @@
         }
     }
 
+// $(".complexity").on("change", function(){console.log(document.getElementById("complexity").value);simplebenchmark = document.getElementById("complexity").value;});
 
+document.getElementById("complexity ").addEventListener("change", complexChange);
+
+function complexChange() {
+    // simplebenchmark  = document.getElementById("complexity").value;
+    console.log("test");
+}
   // Most methods of the Chrome extension APIs are asynchronous. This means that
   // you CANNOT do something like this:
   //
