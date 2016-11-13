@@ -6,11 +6,9 @@ function complexFunc() {
   //alert(document.getElementById("complexity").value);
   chrome.extension.getBackgroundPage().simplebenchmark = document.getElementById("complexity").value;
 }
-document.getElementById('complexity').onchange = complexFunc;
 function jumpFunc() {
   chrome.extension.getBackgroundPage().replacespacing = document.getElementById("jumplength").value;
 }
-document.getElementById('jumplength').onchange = jumpFunc;
 /*
 document.addEventListener('DOMContentLoaded', function() {
   	renderStatus(window.getSelection().toString());
@@ -20,5 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     // renderStatus(window.getSelection().toString());
     console.log("testtest");
-    document.getElementById("complexity").addEventListener("change", complexFunc);
+    document.getElementById("complexity").addEventListener("change", complexFunc, false);
+    document.getElementById("jumplength").addEventListener("change", jumpFunc, false);
 });
