@@ -9,7 +9,7 @@
 //Content_Scripts Variables
 var replacespacing = 5;
 var simplebenchmark = 8000;
-var replacing = true; 
+var replacing = true;
 
 
 

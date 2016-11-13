@@ -21,11 +21,10 @@
     "js": ["jquery-3.1.1.min.js", "betterreplace.js", "content.js"]
   }
   ],
-<<<<<<< HEAD
 
   "background":
     {
-        "scripts": ["jquery-3.1.1.js", "loadWords.js"]
+        "scripts": ["jquery-3.1.1.js", "thesaurus.js"]
     },
 
   "browser_action": {
@@ -33,11 +32,9 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab"
-=======
+    "activeTab"],
   "manifest_version": 2,
   "web_accessible_resources": [
   "words.json"
->>>>>>> 4e797a68a7db469abcaf444936fd0775762e76b6
   ]
 }
